@@ -1,0 +1,38 @@
+<ng-container>
+    <div class="card mt-2">
+      <div class="card-body">
+        <span class="number-of-items">{{ cartItem?.numberOfItems }}x </span>
+        <span class="name">{{ cartItem?.item?.name }} </span>
+        <span class="price">{{ cartItem?.item?.price | currency }} </span>
+        <div class="actions mt-1">
+          <div
+            class="btn-group right-position"
+            role="group"
+            aria-label="Basic example"
+          >
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="increaseItemInCart()"
+            >
+              <i class="bi bi-plus-lg"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="reduceItemInCart()"
+            >
+              <i class="bi bi-dash"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="removeItemFromCart()"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-container>

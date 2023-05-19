@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    {{item?.name}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{item?.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">#{{item?.id}}</h6>
+    <p class="card-text">{{item?.description}}</p>
+    <p class="card-text">{{item?.price | currency }}</p>
+    <a class="btn btn-secondary" (click)="addToCart(item!)">Add to cart 🛒</a>
+  </div>
+</div>

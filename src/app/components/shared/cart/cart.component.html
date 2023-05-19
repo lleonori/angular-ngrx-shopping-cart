@@ -1,0 +1,24 @@
+<ng-container *ngIf="cartItems as items">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel">My cart 🛒</h5>
+    <span *ngIf="items.length === 0">Empty cart 🕵🏻</span>
+    <p *ngIf="items.length > 0">Total: {{ totalPrice | currency }}</p>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+      (click)="closeCart()"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <app-item-cart
+      *ngFor="let item of items"
+      [cartItem]="item"
+      (reduceItemInCartEvent)="reduceItem(item)"
+      (removeItemInCartEvent)="removeItem(item)"
+      (increaseItemInCartEvent)="increaseItem(item)"
+    >
+    </app-item-cart>
+  </div>
+</ng-container>
