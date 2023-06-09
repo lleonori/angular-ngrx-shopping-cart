@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+  super-linter:
+    image: github/super-linter:v3.15.5
+    environment:
+    - RUN_LOCAL=true
+    - VALIDATE_MARKDOWN=false
+    - VALIDATE_NATURAL_LANGUAGE=false
+    - VALIDATE_JAVASCRIPT_STANDARD=false
+    - IGNORE_GITIGNORED_FILES=true
+    volumes:
+    - .:/tmp/lint/
   angularngrxshoppingcart:
     image: angularngrxshoppingcart
     build:
