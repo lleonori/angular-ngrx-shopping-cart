@@ -6,7 +6,7 @@ import { CartPageActions } from 'src/app/store/app.actions';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+  styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
   @Input() numberOfItems!: number | null;

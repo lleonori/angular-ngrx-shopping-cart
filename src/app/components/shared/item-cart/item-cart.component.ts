@@ -5,13 +5,13 @@ import { CartItem, Item } from 'src/app/core/models/global.models';
 import { CartPageActions } from 'src/app/store/app.actions';
 import {
   selectCartItems,
-  selectCartTotalPrice,
+  selectCartTotalPrice
 } from 'src/app/store/app.selectors';
 
 @Component({
   selector: 'app-item-cart',
   templateUrl: './item-cart.component.html',
-  styleUrls: ['./item-cart.component.scss'],
+  styleUrls: ['./item-cart.component.scss']
 })
 export class ItemCartComponent {
   @Input() cartItem: CartItem | undefined;

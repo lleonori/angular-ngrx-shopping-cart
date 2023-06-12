@@ -8,7 +8,7 @@ import { selectItems } from 'src/app/store/app.selectors';
 @Component({
   selector: 'app-productlist',
   templateUrl: './productlist.component.html',
-  styleUrls: ['./productlist.component.scss'],
+  styleUrls: ['./productlist.component.scss']
 })
 export class ProductlistComponent implements OnInit {
   items$: Observable<Item[]> = this.store.select(selectItems);

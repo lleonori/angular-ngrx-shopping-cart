@@ -2,7 +2,7 @@ import {
   createAction,
   createActionGroup,
   emptyProps,
-  props,
+  props
 } from '@ngrx/store';
 import { CartItem, Item } from '../core/models/global.models';
 
@@ -22,6 +22,6 @@ export const CartPageActions = createActionGroup({
     'Add item to cart': props<{ item: Item }>(),
     'Reduce number of item in cart': props<{ cartItem: CartItem }>(),
     'Increase number of item in cart': props<{ cartItem: CartItem }>(),
-    'Remove item from cart': props<{ cartItem: CartItem }>(),
-  },
+    'Remove item from cart': props<{ cartItem: CartItem }>()
+  }
 });

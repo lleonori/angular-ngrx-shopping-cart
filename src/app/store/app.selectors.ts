@@ -23,9 +23,6 @@ export const selectCartTotalPrice = createSelector(
   }
 );
 
-export const selectCartItems = createSelector(
-  getState,
-  (state: AppState) => {
-    return state.cartItems;
-  }
-);
+export const selectCartItems = createSelector(getState, (state: AppState) => {
+  return state.cartItems;
+});

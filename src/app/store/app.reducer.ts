@@ -16,18 +16,18 @@ export const AppReducer = createReducer<AppState>(
     // const colleghiDevOps = ['Valerio', 'Leandro', 'Vincenzo'];
     // const gruppoPartec = [...colleghiDev, ...colleghiDevOps] => ottengo un nuovo array contente ['Michele', 'Roberto', 'Fabrizio', 'Valerio', 'Leandro', 'Vincenzo']
     ...state,
-    isCartOpen: true,
+    isCartOpen: true
   })),
 
   on(CartPageActions.closeCart, (state) => ({
     ...state,
-    isCartOpen: false,
+    isCartOpen: false
   })),
 
   on(itemsLoadedSuccess, (store, props) => {
     return {
       ...store,
-      items: props.data,
+      items: props.data
     };
   }),
 
@@ -52,7 +52,7 @@ export const AppReducer = createReducer<AppState>(
               [{ id: props.item.id, numberOfItems: 1, item: props.item }]
         ),
       // infine aumento il contatore degli articoli globali
-      numberOfItems: store.numberOfItems + 1,
+      numberOfItems: store.numberOfItems + 1
     };
   }),
 
@@ -66,7 +66,7 @@ export const AppReducer = createReducer<AppState>(
             : { ...cartItem, numberOfItems: cartItem.numberOfItems - 1 }
         )
         .filter(({ numberOfItems }) => numberOfItems > 0),
-      numberOfItems: store.numberOfItems - 1,
+      numberOfItems: store.numberOfItems - 1
     };
   }),
 
@@ -81,18 +81,18 @@ export const AppReducer = createReducer<AppState>(
         )
         // filtra cartItem e mostra solo le qta positive
         .filter(({ numberOfItems }) => numberOfItems > 0),
-      numberOfItems: store.numberOfItems + 1,
+      numberOfItems: store.numberOfItems + 1
     };
   }),
 
   on(CartPageActions.removeItemFromCart, (store: AppState, props) => {
     const cartItems = [
-      ...store.cartItems.filter((item) => item.id !== props.cartItem.id),
+      ...store.cartItems.filter((item) => item.id !== props.cartItem.id)
     ];
     return {
       ...store,
       cartItems,
-      numberOfItems: getNumberOfItems(cartItems),
+      numberOfItems: getNumberOfItems(cartItems)
     };
   })
 );

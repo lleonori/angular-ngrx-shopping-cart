@@ -1,4 +1,4 @@
 // routing paths
 export enum RoutingPaths {
-  Home = 'home',
-};
+  Home = 'home'
+}

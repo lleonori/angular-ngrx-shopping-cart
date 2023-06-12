@@ -18,7 +18,7 @@ const components = [
   ItemProductComponent,
   SidebarComponent,
   ItemCartComponent,
-  CartComponent,
+  CartComponent
 ];
 
 @NgModule({
@@ -26,6 +26,6 @@ const components = [
   imports: [FormsModule, CommonModule, ReactiveFormsModule],
   entryComponents: [],
   exports: components,
-  providers: [],
+  providers: []
 })
 export class ComponentsModule {}
