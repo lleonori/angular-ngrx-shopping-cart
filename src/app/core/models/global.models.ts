@@ -1,13 +1,13 @@
 export interface Item {
-  id: string;
-  name: string;
   description: string;
-  price: number;
+  id: string;
   imageUrl: string;
+  name: string;
+  price: number;
 }
 
 export interface CartItem {
   id: string;
-  numberOfItems: number;
   item: Item;
+  numberOfItems: number;
 }

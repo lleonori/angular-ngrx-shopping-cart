@@ -1,8 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
-import { INITIAL_APP_STATE } from '../constants/constants';
+
 import { AppState } from '../core/models/app.models';
-import { CartPageActions, itemsLoadedSuccess } from './app.actions';
 import { CartItem } from '../core/models/global.models';
+import { CartPageActions, itemsLoadedSuccess } from './app.actions';
+import { INITIAL_APP_STATE } from '../constants/constants';
 
 export const AppReducer = createReducer<AppState>(
   // presa dello stato applicativo iniziale
@@ -49,7 +50,7 @@ export const AppReducer = createReducer<AppState>(
             ? // se è già nel carello non concateno nulla
               []
             : // se non esiste creo il nuovo oggetto da inserire nel carrello partendo da una qta pari a 1
-              [{ id: props.item.id, numberOfItems: 1, item: props.item }]
+              [{ id: props.item.id, item: props.item, numberOfItems: 1 }]
         ),
       // infine aumento il contatore degli articoli globali
       numberOfItems: store.numberOfItems + 1,

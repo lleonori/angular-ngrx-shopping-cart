@@ -1,17 +1,13 @@
-import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, catchError, mergeMap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+
 import { ApiService } from '../core/services/api.service';
 import { getItems, itemsLoadedSuccess } from './app.actions';
 
 @Injectable()
 export class AppEffects {
-  constructor(private apiService: ApiService, private actions$: Actions) {}
-
-  // tramite createEffect andiamo a creare il nostro effetto
-  // questa funzione prende in input una source => una funzione che ritorna observable e config che permette di stabilire se questo effect
-  // farà o meno dispach di azioni
   // questa funzione restituisce un Observable
   loadArticles$ = createEffect(() =>
     this.actions$.pipe(
@@ -30,4 +26,9 @@ export class AppEffects {
       )
     )
   );
+
+  // tramite createEffect andiamo a creare il nostro effetto
+  // questa funzione prende in input una source => una funzione che ritorna observable e config che permette di stabilire se questo effect
+  // farà o meno dispach di azioni
+  constructor(private apiService: ApiService, private actions$: Actions) {}
 }

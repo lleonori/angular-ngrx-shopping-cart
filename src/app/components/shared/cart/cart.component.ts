@@ -1,28 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { CartItem } from 'src/app/core/models/global.models';
 import { CartPageActions } from 'src/app/store/app.actions';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
+  templateUrl: './cart.component.html',
 })
 export class CartComponent {
-  @Input() numberOfItems!: number | null;
-  @Input() totalPrice!: number | null;
   @Input() cartItems!: CartItem[] | null;
   @Output()
   closeEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() numberOfItems!: null | number;
+  @Input() totalPrice!: null | number;
 
   constructor(private store: Store) {}
 
-  reduceItem(cartItem: CartItem) {
-    this.store.dispatch(CartPageActions.reduceNumberOfItemInCart({ cartItem }));
-  }
-
-  removeItem(cartItem: CartItem) {
-    this.store.dispatch(CartPageActions.removeItemFromCart({ cartItem }));
+  closeCart() {
+    this.store.dispatch(CartPageActions.closeCart());
   }
 
   increaseItem(cartItem: CartItem) {
@@ -31,7 +27,11 @@ export class CartComponent {
     );
   }
 
-  closeCart() {
-    this.store.dispatch(CartPageActions.closeCart());
+  reduceItem(cartItem: CartItem) {
+    this.store.dispatch(CartPageActions.reduceNumberOfItemInCart({ cartItem }));
+  }
+
+  removeItem(cartItem: CartItem) {
+    this.store.dispatch(CartPageActions.removeItemFromCart({ cartItem }));
   }
 }

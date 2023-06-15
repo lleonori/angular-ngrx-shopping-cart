@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './components/features/home/home.component';
 import { RoutingPaths } from './constants/enums';
 
 const routes: Routes = [
-  { path: '', redirectTo: RoutingPaths.Home, pathMatch: 'full' },
-  { path: RoutingPaths.Home, component: HomeComponent },
-  { path: '**', redirectTo: RoutingPaths.Home, pathMatch: 'full' },
+  { path: '', pathMatch: 'full', redirectTo: RoutingPaths.Home },
+  { component: HomeComponent, path: RoutingPaths.Home },
+  { path: '**', pathMatch: 'full', redirectTo: RoutingPaths.Home },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {}

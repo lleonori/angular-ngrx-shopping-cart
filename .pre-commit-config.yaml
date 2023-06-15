@@ -1,10 +1,26 @@
 repos:
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v2.7.1"
+    hooks:
+      - id: prettier
+        additional_dependencies:
+          - prettier@2.1.2
   - repo: https://github.com/pre-commit/mirrors-eslint
-    rev: v4.4.0
+    rev: "v8.42.0"
     hooks:
       - id: eslint
-        additional_dependencies:
-          - eslint@8.42.0
-          - eslint-plugin-angular@4.1.0
-        files: \.[jt]sx?$ # *.js, *.jsx, *.ts and *.tsx
+        args: [--fix]
+        files: \.[jt]sx?$
         types: [file]
+        additional_dependencies:
+          - "eslint@8.17.0"
+          - "@typescript-eslint/eslint-plugin@5.27.1"
+          - "@typescript-eslint/parser@5.27.1"
+          - "@angular-eslint/builder@13.5.0"
+          - "@angular-eslint/eslint-plugin@13.5.0"
+          - "@angular-eslint/eslint-plugin-template@13.5.0"
+          - "@angular-eslint/schematics@13.5.0"
+          - "@angular-eslint/template-parser@13.5.0"
+          - eslint-config-prettier@8.8.0
+          - eslint-plugin-unused-imports@2.0.0
+          - eslint-plugin-sort-imports-es6-autofix

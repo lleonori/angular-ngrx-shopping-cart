@@ -1,8 +1,7 @@
+import { CartItem } from 'src/app/core/models/global.models';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CartItem, Item } from 'src/app/core/models/global.models';
-import { CartPageActions } from 'src/app/store/app.actions';
+import { Store } from '@ngrx/store';
 import {
   selectCartItems,
   selectCartTotalPrice,
@@ -10,19 +9,23 @@ import {
 
 @Component({
   selector: 'app-item-cart',
-  templateUrl: './item-cart.component.html',
   styleUrls: ['./item-cart.component.scss'],
+  templateUrl: './item-cart.component.html',
 })
 export class ItemCartComponent {
   @Input() cartItem: CartItem | undefined;
+  cartItems$: Observable<CartItem[]> = this.store.select(selectCartItems);
   @Output() increaseItemInCartEvent = new EventEmitter<CartItem>();
   @Output() reduceItemInCartEvent = new EventEmitter<CartItem>();
-  @Output() removeItemInCartEvent = new EventEmitter<CartItem>();
 
+  @Output() removeItemInCartEvent = new EventEmitter<CartItem>();
   totalPrice$: Observable<number> = this.store.select(selectCartTotalPrice);
-  cartItems$: Observable<CartItem[]> = this.store.select(selectCartItems);
 
   constructor(private store: Store) {}
+
+  increaseItemInCart() {
+    this.increaseItemInCartEvent.emit(this.cartItem);
+  }
 
   reduceItemInCart() {
     this.reduceItemInCartEvent.emit(this.cartItem);
@@ -30,9 +33,5 @@ export class ItemCartComponent {
 
   removeItemFromCart() {
     this.removeItemInCartEvent.emit(this.cartItem);
-  }
-
-  increaseItemInCart() {
-    this.increaseItemInCartEvent.emit(this.cartItem);
   }
 }

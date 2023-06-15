@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { AppState } from '../core/models/app.models';
 import { CartItem } from '../core/models/global.models';
 
@@ -23,9 +24,6 @@ export const selectCartTotalPrice = createSelector(
   }
 );
 
-export const selectCartItems = createSelector(
-  getState,
-  (state: AppState) => {
-    return state.cartItems;
-  }
-);
+export const selectCartItems = createSelector(getState, (state: AppState) => {
+  return state.cartItems;
+});
